@@ -34,7 +34,7 @@ class IPVanish:
         if isinstance(value, str):
             data = [d for d in data if getattr(d, key) == value]
         elif isinstance(value, (list, tuple)):
-            data = [d for d in data if d[key] in value]
+            data = [d for d in data if getattr(d, key) in value]
         else:
             raise NotImplementedError()
         return data

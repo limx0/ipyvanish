@@ -25,4 +25,9 @@ Or clone the repo:
 Example
 -------
 
-TBD
+Poll for all servers
+`$ ipyvanish poll`
+
+Or for specific country / city (or multiple) via `--countries` or `--cities`
+
+`$ ipyvanish poll --countries=[Australia, Canada]`
