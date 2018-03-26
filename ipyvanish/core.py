@@ -14,13 +14,14 @@ class IPVanish:
     url = 'https://www.ipvanish.com/api/servers.geojson'
     fields = server._fields
 
-    def __init__(self, countries=None, cities=None, count=5, sort_by='capacity', ascending=True, retry_count=5):
+    def __init__(self, countries=None, cities=None, count=5, sort_by='capacity', ascending=True, retry_count=5, values_only=False):
         self.countries = countries
         self.cities = cities
         self.count = count
         self.sort_by = sort_by
         self.ascending = ascending
         self.retry_count = retry_count
+        self.values_only = values_only
 
     def _request(self):
         for _ in range(self.retry_count):
@@ -40,7 +41,10 @@ class IPVanish:
         return data
 
     def _format(self, data):
-        return tabulate.tabulate(data[:self.count], headers=self.fields)
+        if self.values_only:
+            return tabulate.tabulate(data[:self.count], tablefmt='plain')
+        else:
+            return tabulate.tabulate(data[:self.count], headers=self.fields)
 
     def poll(self):
         raw = self._request()
