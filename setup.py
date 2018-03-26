@@ -20,21 +20,24 @@ dependency_links = [x.strip().replace('git+', '') for x in all_reqs if x.startsw
 setup(
     name='ipyvanish',
     version=__version__,
-    description='A python package that can be installed with pip.',
+    description='A simple python CLI for the IPVanish VPN',
     long_description=long_description,
     url='https://github.com/limx0/ipyvanish',
     download_url='https://github.com/limx0/ipyvanish/tarball/' + __version__,
     license='BSD',
     classifiers=[
-      'Development Status :: 3 - Alpha',
-      'Intended Audience :: Developers',
       'Programming Language :: Python :: 3',
     ],
     keywords='',
-    packages=find_packages(exclude=['docs', 'tests*']),
+    packages=find_packages(exclude=['tests*']),
     include_package_data=True,
     author='Bradley McElroy',
     install_requires=install_requires,
     dependency_links=dependency_links,
+    entry_points={
+        'console_scripts': [
+            'ipyvanish = ipyvanish:main'
+        ]
+    },
     author_email='bradley.mcelroy@live.com'
 )
