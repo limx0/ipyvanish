@@ -9,7 +9,7 @@ name = "pypi"
 
 fire = "*"
 tabulate = "*"
-requests = "*"
+requests = ">=2.20.0"
 
 
 [dev-packages]
